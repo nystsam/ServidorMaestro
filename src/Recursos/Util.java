@@ -15,6 +15,7 @@ public class Util {
     
     public static int puerto = 55000;
     public static String red = "Red-B";
+    public static int puertoEsclavosUDP = 56000;
     
     
 }

@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import Logica.DaemonEsclavosUDP;
+
 /**
  *
  * @author Daniel
@@ -16,6 +18,8 @@ public class Main {
      */
     public static void main(String[] args) {
         
+        DaemonEsclavosUDP esclavosBroadcast = new DaemonEsclavosUDP();
+        esclavosBroadcast.start();
         
         Ventana ventana = new Ventana();
         ventana.setVisible(true);
