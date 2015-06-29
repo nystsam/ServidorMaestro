@@ -20,6 +20,10 @@ public class ListaArchivos implements Serializable {
         this.lista = lista;
     }
     
+    public ListaArchivos() {
+        this.lista = new ArrayList<Archivo>();
+    }
+    
     public void agregarArchivo(Archivo archivo){
         
         this.lista.add(archivo);

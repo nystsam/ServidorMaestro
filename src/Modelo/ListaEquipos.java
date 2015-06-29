@@ -11,14 +11,17 @@ import java.util.Iterator;
 
 /**
  *
- * @author Daniel
+ * @author desarrollo
  */
 public class ListaEquipos implements Serializable {
-
+    
     private ArrayList<Equipo> lista;
 
     public ListaEquipos(ArrayList<Equipo> lista) {
         this.lista = lista;
+    }
+    public ListaEquipos() {
+        this.lista = new ArrayList<Equipo>();
     }
     
     public void agregarEquipo(Equipo equipo){
@@ -39,20 +42,21 @@ public class ListaEquipos implements Serializable {
         
     }
     
-    public Equipo buscarEquipo(int numeroEquipo){
+    public String [] buscarEquipo(int numeroEquipo){
         
-        Equipo eq;
+        String [] info = new String[2];
         
         for(Iterator<Equipo> ite = this.lista.iterator(); ite.hasNext(); ){
             
-            eq = ite.next();
+            Equipo eq = ite.next();
             if(eq.getNumero() == numeroEquipo){
-                return eq;
+                info[0] = eq.getIp();
+                info[1] = Integer.toString(eq.getPuerto());
             }
                 
         }
         
-        return null;
+        return info;
     }
     
     // GET y SET
@@ -63,7 +67,5 @@ public class ListaEquipos implements Serializable {
     public void setLista(ArrayList<Equipo> lista) {
         this.lista = lista;
     }
-    
-    
-    
+
 }

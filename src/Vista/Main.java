@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Logica.DaemonClienteUDP;
 import Logica.DaemonEsclavosUDP;
 
 /**
@@ -20,6 +21,9 @@ public class Main {
         
         DaemonEsclavosUDP esclavosBroadcast = new DaemonEsclavosUDP();
         esclavosBroadcast.start();
+        
+        DaemonClienteUDP clientesBroadcast = new DaemonClienteUDP();
+        clientesBroadcast.start();
         
         Ventana ventana = new Ventana();
         ventana.setVisible(true);

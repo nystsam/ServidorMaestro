@@ -5,7 +5,7 @@
  */
 package Logica;
 
-import Recursos.Util;
+import Utils.Utils;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -26,10 +26,10 @@ public class DaemonPeticionesCliente extends Thread {
         Socket so;
         try{
             
-            ss = new ServerSocket(Util.puerto);
+            ss = new ServerSocket(Utils.puerto);
             while (true){
                 
-                System.out.println("Esperando petciones del cliente por el puerto: " + Util.puerto);
+                System.out.println("Esperando petciones del cliente por el puerto: " + Utils.puerto);
                 so = ss.accept();
                 System.out.println( "Peticion recibida de: " +  so.getInetAddress().getHostAddress());
                 

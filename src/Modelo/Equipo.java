@@ -9,21 +9,29 @@ import java.io.Serializable;
 
 /**
  *
- * @author Daniel
+ * @author desarrollo
  */
 public class Equipo implements Serializable {
-    
     private String ip;
     private int puerto;
     private int numero;
-
-    public Equipo(String ip, int puerto,  int numero) {
+    private ListaArchivos archivos;
+    
+    public Equipo(String ip, int puerto,  int numero, ListaArchivos archivos) {
+        this.archivos = archivos;
         this.ip = ip;
         this.puerto = puerto;
         this.numero = numero;
     }
 
-    
+    public ListaArchivos getArchivos() {
+        return archivos;
+    }
+
+    public void setArchivos(ListaArchivos archivos) {
+        this.archivos = archivos;
+    }
+
     // GET y SET
     public String getIp() {
         return ip;
@@ -48,6 +56,4 @@ public class Equipo implements Serializable {
     public void setNumero(int numero) {
         this.numero = numero;
     }
-    
-    
 }

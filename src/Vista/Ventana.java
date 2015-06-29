@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import Recursos.Util;
+import Utils.Utils;
 
 /**
  *
@@ -19,7 +19,7 @@ public class Ventana extends javax.swing.JFrame {
     public Ventana() {
         initComponents();
         
-        this.jLabelNombreRed.setText(Util.red); 
+        this.jLabelNombreRed.setText(Utils.red); 
         
         
     }

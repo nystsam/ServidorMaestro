@@ -5,7 +5,7 @@
  */
 package Logica;
 
-import Recursos.Util;
+import Utils.Utils;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -28,7 +28,7 @@ public class DaemonEsclavosUDP extends Thread {
      
         try {
             
-            DatagramSocket socketUDP = new DatagramSocket(Util.puertoEsclavosUDP);
+            DatagramSocket socketUDP = new DatagramSocket(Utils.puertoEsclavosUDP);
             byte[] bufer = new byte[1000];
 
             while (true) {
@@ -39,7 +39,7 @@ public class DaemonEsclavosUDP extends Thread {
                 // Leemos una petición del DatagramSocket
                 socketUDP.receive(peticion);
 
-                System.out.print("Datagrama recibido del host: " + peticion.getAddress());
+                System.out.print("Datagrama ESCLAVO recibido del host: " + peticion.getAddress());
                 System.out.println(" desde el puerto remoto: " + peticion.getPort());
 
                 // Construimos el DatagramPacket para enviar la respuesta
