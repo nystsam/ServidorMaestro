@@ -5,7 +5,6 @@
  */
 package Logica;
 
-import Modelo.Response;
 import Utils.Utils;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -15,8 +14,6 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.SocketException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
