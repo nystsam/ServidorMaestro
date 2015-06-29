@@ -5,8 +5,8 @@
  */
 package Vista;
 
-import Logica.DaemonClienteUDP;
-import Logica.DaemonEsclavosUDP;
+import Logica.DaemonClienteMulticast;
+import Logica.DaemonEsclavosMulticast;
 
 /**
  *
@@ -19,10 +19,10 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        DaemonEsclavosUDP esclavosBroadcast = new DaemonEsclavosUDP();
+        DaemonEsclavosMulticast esclavosBroadcast = new DaemonEsclavosMulticast();
         esclavosBroadcast.start();
         
-        DaemonClienteUDP clientesBroadcast = new DaemonClienteUDP();
+        DaemonClienteMulticast clientesBroadcast = new DaemonClienteMulticast();
         clientesBroadcast.start();
         
         Ventana ventana = new Ventana();

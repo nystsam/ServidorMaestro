@@ -18,6 +18,7 @@ public class Response implements Serializable {
     
     private Red red;
     private String error;
+    private int puertoCliente;
 
     public Response(Red red, String error) {
         this.red = red;
@@ -39,5 +40,14 @@ public class Response implements Serializable {
     public void setError(String error) {
         this.error = error;
     }
+
+    public int getPuertoCliente() {
+        return puertoCliente;
+    }
+
+    public void setPuertoCliente(int puertoCliente) {
+        this.puertoCliente = puertoCliente;
+    }
+    
     
 }

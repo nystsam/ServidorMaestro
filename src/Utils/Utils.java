@@ -1,5 +1,6 @@
 package Utils;
 
+import Modelo.ListaEquipos;
 import Modelo.ListaRedes;
 
 /*
@@ -17,8 +18,9 @@ public class Utils {
     
     public static int puerto = 55000;
     public static String red = "Red-B";
-    public static int puertoEsclavosUDP = 56000;
-    public static int puertoClienteUDP = 56500;
+    public static ListaEquipos listaEquipos = new ListaEquipos();
+    public static int puertoEsclavosMulticast = 56000;
+    public static int puertoClienteMulticast = 56500;
     
     
    public static String IpServidor = "";
