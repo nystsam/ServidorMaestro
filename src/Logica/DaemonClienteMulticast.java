@@ -48,12 +48,12 @@ public class DaemonClienteMulticast extends Thread{
             // Se queda a la espera de mensajes al grupo, hasta recibir "Adios"
             while (true) {
               DatagramPacket mensajeEntrada = new DatagramPacket(bufer, bufer.length);
-              System.out.println("Esperando un cliente por el puerto: "+String.valueOf(Utils.puertoClienteMulticast));
+              System.out.println("Esperando multicast de clientes por el puerto: "+String.valueOf(Utils.puertoClienteMulticast));
               socket.receive(mensajeEntrada);
-              //linea = new String(mensajeEntrada.getData(), 0, mensajeEntrada.getLength());
+              
               Response respuesta = (Response)this.convertFromBytes(mensajeEntrada.getData());
 
-              System.out.println("Recibido el host: "+ mensajeEntrada.getAddress().getHostAddress() + " con puerto de escucha: " + String.valueOf(respuesta.getPuertoCliente()));
+              System.out.println("Recibido el host: "+ mensajeEntrada.getAddress().getHostAddress() + " con puerto de escucha: " + String.valueOf(respuesta.getPuertoCliente())+"\n");
 
               EnvioDatosRed enviar = new EnvioDatosRed(mensajeEntrada.getAddress().getHostAddress(), respuesta.getPuertoCliente());
               enviar.start();

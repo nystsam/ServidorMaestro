@@ -7,6 +7,7 @@ package Vista;
 
 import Logica.DaemonClienteMulticast;
 import Logica.DaemonEsclavosMulticast;
+import Logica.DaemonUnionEsclavos;
 
 /**
  *
@@ -17,7 +18,10 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args){
+        
+        DaemonUnionEsclavos listadoEsclavos = new DaemonUnionEsclavos();
+        listadoEsclavos.start();
         
         DaemonEsclavosMulticast esclavosBroadcast = new DaemonEsclavosMulticast();
         esclavosBroadcast.start();

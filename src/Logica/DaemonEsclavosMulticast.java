@@ -25,14 +25,6 @@ public class DaemonEsclavosMulticast extends Thread {
         
     }
     
-    private Object convertFromBytes(byte[] bytes) throws IOException, ClassNotFoundException {
-       
-        try (ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
-            ObjectInput in = new ObjectInputStream(bis)) {
-            return in.readObject();
-        }
-    }
-    
     @Override
     public void run(){
      
@@ -49,17 +41,15 @@ public class DaemonEsclavosMulticast extends Thread {
                 
                 String respuesta;
                 DatagramPacket mensajeEntrada = new DatagramPacket(bufer, bufer.length);
-                System.out.println("Esperando un esclavo por el puerto: "+String.valueOf(Utils.puertoClienteMulticast));
+                System.out.println("Esperando multicast de esclavos por el puerto: "+String.valueOf(Utils.puertoEsclavosMulticast));
                 socket.receive(mensajeEntrada);
-                //linea = new String(mensajeEntrada.getData(), 0, mensajeEntrada.getLength());
-                //Response respuesta = (Response)this.convertFromBytes(mensajeEntrada.getData());
 
                 respuesta = new String(mensajeEntrada.getData(), 0, mensajeEntrada.getLength());
                 
-                System.out.println("Recibido el host: "+ mensajeEntrada.getAddress().getHostAddress() + " con puerto de escucha: " + respuesta);
+                System.out.println("Recibido el host: "+ mensajeEntrada.getAddress().getHostAddress() + " con puerto de escucha: " + respuesta+"\n");
 
-                //EnvioDatosRed enviar = new EnvioDatosRed(mensajeEntrada.getAddress().getHostAddress(), respuesta.getPuertoCliente());
-                //enviar.start();
+                EnvioRed envio = new EnvioRed(mensajeEntrada.getAddress().getHostAddress(), Integer.parseInt(respuesta));
+                envio.start();
            }
 
         } catch (SocketException e) {

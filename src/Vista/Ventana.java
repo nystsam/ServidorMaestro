@@ -36,6 +36,7 @@ public class Ventana extends javax.swing.JFrame {
         jLabelNombreRed = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Servidor Maestro");
 
         jLabelNombreRed.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelNombreRed.setText("RED");
@@ -57,7 +58,7 @@ public class Ventana extends javax.swing.JFrame {
                 .addContainerGap(318, Short.MAX_VALUE))
         );
 
-        pack();
+        setBounds(0, 0, 502, 398);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

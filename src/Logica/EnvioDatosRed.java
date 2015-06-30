@@ -74,12 +74,13 @@ public class EnvioDatosRed extends Thread {
             so = new Socket(this.ipCliente, this.puertoCliente);
             DataOutputStream output = new DataOutputStream(so.getOutputStream());
             
-            Response datosRed = new Response(this.obtenerDatosRed(),"si sirve");
+            Response datosRed = new Response(this.obtenerDatosRed(), "");
             byte[] objeto = ObjectToByteArray(datosRed);
             output.write(objeto);
             output.flush();
 
-        
+            so.close();
+            
         } catch (IOException ex) {
             System.out.println("Error al avisar al cliente.");
         }

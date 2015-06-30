@@ -13,28 +13,29 @@ import java.net.Socket;
  *
  * @author Daniel
  */
-public class DaemonPeticionesCliente extends Thread {
-    
-    public DaemonPeticionesCliente(){
-    
-    }
+public class DaemonUnionEsclavos extends Thread {
 
+    public DaemonUnionEsclavos() {
+
+    }
+    
     @Override
     public void run(){
-        
+    
         ServerSocket ss;
         Socket so;
         try{
             
-            ss = new ServerSocket(Utils.puertoPeticionCliente);
+            ss = new ServerSocket(Utils.puertoUnionEsclavos);
             while (true){
                 
-                System.out.println("Esperando petciones del cliente por el puerto: " + Utils.puertoPeticionCliente);
+                System.out.println("Esperando petciones de union de esclavos por el puerto: " + Utils.puertoUnionEsclavos);
                 so = ss.accept();
-                System.out.println( "Peticion de cliente recibida de: " +  so.getInetAddress().getHostAddress()+"\n");
+                System.out.println( "Peticion de union recibida de: " +  so.getInetAddress().getHostAddress()+"\n");
                 
                 // Atender solicitud 
-                
+                UnirEsclavo nuevoEsclavo = new UnirEsclavo(so);
+                nuevoEsclavo.start();
                 
             }
         }catch(Exception e ){
@@ -42,5 +43,6 @@ public class DaemonPeticionesCliente extends Thread {
         }
         
     }
+    
     
 }
