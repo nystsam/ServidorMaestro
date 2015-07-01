@@ -45,7 +45,7 @@ public class EnvioRed extends Thread{
             so.close();
             
         } catch (IOException ex) {
-            System.out.println("Error al avisar al cliente.");
+            System.out.println("Error al avisar al esclavo.");
         }
     }
     
