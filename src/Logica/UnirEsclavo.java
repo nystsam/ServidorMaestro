@@ -45,6 +45,9 @@ public class UnirEsclavo extends Thread {
             output.writeUTF(respuesta);
             output.flush();
             
+            NotificacionCambios notificacion = new NotificacionCambios();
+            notificacion.notificar();
+            
         } catch (IOException ex) {
             Logger.getLogger(UnirEsclavo.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

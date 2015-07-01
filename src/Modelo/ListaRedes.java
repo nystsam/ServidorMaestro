@@ -46,6 +46,20 @@ public class ListaRedes implements Serializable {
         
     }
     
+        public boolean eliminarRed(String nombreRed){
+        
+        for (Red red : Utils.Utils.redes.getLista()) {
+            
+            if(red.getNombre().equals(nombreRed)){
+                Utils.Utils.redes.getLista().remove(red);
+                return true;
+            }
+            
+        }
+        
+        return false;
+    }
+    
     public ListaArchivos obtenerArchivos(){
         
         ListaArchivos archivos = new ListaArchivos();
