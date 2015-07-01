@@ -44,7 +44,10 @@ public class PeticionEliminacion extends Peticion implements Serializable {
                 File archivoLocal = new File(directorio+this.nombreGeneralArchivo);
 
                 if (archivoLocal.exists()) {
+                    archivoLocal.setWritable(true);
+                    System.gc();
                     archivoLocal.delete();
+                    
 
                     for(int i = 0; i < Utils.listaArchivos.getLista().size(); i++){
 

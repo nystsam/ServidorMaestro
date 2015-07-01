@@ -93,7 +93,10 @@ public class PeticionesCliente extends Thread {
             Logger.getLogger(PeticionesCliente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException e){
             System.out.println("Error, objetos distintos.");
+        } catch (Exception exe){
+            System.out.println("\n Error en el comando o nombre del archivo \n");
         }
+        
         
   
     }
@@ -101,31 +104,30 @@ public class PeticionesCliente extends Thread {
     private boolean enviarAlEquipo(Peticion peticion, String equipoRemoto) throws ClassNotFoundException{
         
         Equipo equipo = null;
-        Socket so;
-        int pos = 0;
+        Socket soEsclavo;
+        int pos;
         for(pos = 0; pos < Utils.listaEquipos.getLista().size(); pos++){
             
             equipo = Utils.listaEquipos.getLista().get(pos);
             if(equipo.getNumero() == Integer.parseInt(equipoRemoto)){
-                Utils.listaEquipos.getLista().remove(equipo);
                 break;
             }  
         }
         
         if(equipo != null){
             try {
-                so = new Socket(equipo.getIp(), equipo.getPuerto());
-                ObjectOutputStream output = new ObjectOutputStream(so.getOutputStream());
+                soEsclavo = new Socket(equipo.getIp(), equipo.getPuerto());
+                ObjectOutputStream output = new ObjectOutputStream(soEsclavo.getOutputStream());
 
                 output.writeObject(peticion);
                 output.flush();
 
-                ObjectInputStream input = new ObjectInputStream(so.getInputStream());
+                ObjectInputStream input = new ObjectInputStream(soEsclavo.getInputStream());
                 ListaArchivos listaActualizada = (ListaArchivos)input.readObject();
                 
                 Utils.listaEquipos.getLista().get(pos).setArchivos(listaActualizada);
 
-                so.close();
+                soEsclavo.close();
 
             } catch (IOException ex) {
                 System.out.println("Error al avisar al esclavo.");
