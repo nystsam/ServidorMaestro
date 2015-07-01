@@ -78,12 +78,15 @@ public class PeticionesCliente extends Thread {
                                      
             }
             
-            DataOutputStream output = new DataOutputStream(this.so.getOutputStream());
             if(this.enviarAlEquipo(peticion, equipoRemoto)){
                 respuesta = "Ok";
             }
             
+            DataOutputStream output = new DataOutputStream(this.so.getOutputStream());
             output.writeUTF(respuesta);
+            
+            NotificacionCambios notificacion = new NotificacionCambios();
+            notificacion.notificar();
             
             
         } catch (IOException ex) {
