@@ -128,6 +128,7 @@ public class PeticionesCliente extends Thread {
                 Utils.listaEquipos.getLista().get(pos).setArchivos(listaActualizada);
 
                 soEsclavo.close();
+                return true;
 
             } catch (IOException ex) {
                 System.out.println("Error al avisar al esclavo.");
