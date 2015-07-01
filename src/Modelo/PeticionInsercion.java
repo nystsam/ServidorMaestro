@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
+import Utils.Utils;
 
 /**
  *
@@ -17,23 +18,18 @@ import java.io.Serializable;
  */
 public class PeticionInsercion extends Peticion implements Serializable {
 
-    private String archivo;
-    private String texto;
-    
-    private String nombre;
-    private String extension;
+    private Archivo archivo;
+    private String nombreGeneralArchivo;
     
     public PeticionInsercion(String nombrePeticion) {
         super(nombrePeticion);
     }
     
-    public PeticionInsercion(String nombrePeticion, String nombreArchivo, String extension, String texto) {
+    public PeticionInsercion(String nombrePeticion, Archivo archivo, String extension) {
         super(nombrePeticion);
-        this.nombre = nombreArchivo;
-        this.extension = extension;
-        
-        this.archivo = nombreArchivo + "." + extension;
-        this.texto = texto;
+        this.archivo = archivo;
+        this.nombreGeneralArchivo = archivo.getNombre() + "." + archivo.getExtension();
+
     }
 
     @Override
@@ -42,7 +38,7 @@ public class PeticionInsercion extends Peticion implements Serializable {
         String directorio = "C:/Archivos-SD/";
         
         try {
-            File archivoLocal = new File(directorio+this.archivo);
+            File archivoLocal = new File(directorio+this.nombreGeneralArchivo);
 
             if (!archivoLocal.exists()) {
                     archivoLocal.createNewFile();
@@ -52,47 +48,46 @@ public class PeticionInsercion extends Peticion implements Serializable {
                 File archivosEnDirectorio = new File(directorio);
                 int cuenta = 0;
                 for(File archivoInterno : archivosEnDirectorio.listFiles()){
-                    if(archivoInterno.getName().equals(this.archivo))
+                    if(archivoInterno.getName().equals(this.archivo.getNombre()))
                         cuenta++;
                 
                 }
-                archivoLocal = new File(directorio+this.nombre+" - copia "+String.valueOf(cuenta)+"."+this.extension);   
+                archivoLocal = new File(directorio+this.archivo.getNombre()+" - copia "+String.valueOf(cuenta)+"."+this.archivo.getExtension());   
             }
 
             FileWriter fw = new FileWriter(archivoLocal.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(this.texto);
+            bw.write(this.archivo.getContenido());
             bw.close();
 
-            System.out.println("Se inserto el archivo: " + this.archivo + "\n");
+            Utils.listaArchivos.getLista().add(this.archivo);
+            System.out.println("Se inserto el archivo: " + this.archivo.getNombre() + "\n");
+
             return true;
  
         } catch (IOException e) {
                 e.printStackTrace();
         } catch (Exception ex){
-            System.out.println("Ocurrio un erro en la creacion del archivo.");
+            System.out.println("Ocurrio un error en la creacion del archivo.");
         }
         
         return false;
     }
-    
-    
-    public String getTexto() {
-        return texto;
-    }
 
-    public String getArchivo() {
+    public Archivo getArchivo() {
         return archivo;
     }
 
-    public void setTexto(String texto) {
-        this.texto = texto;
+    public String getNombreGeneralArchivo() {
+        return nombreGeneralArchivo;
     }
 
-    public void setArchivo(String archivo) {
+    public void setArchivo(Archivo archivo) {
         this.archivo = archivo;
     }
-    
-    
+
+    public void setNombreGeneralArchivo(String nombreGeneralArchivo) {
+        this.nombreGeneralArchivo = nombreGeneralArchivo;
+    }
     
 }

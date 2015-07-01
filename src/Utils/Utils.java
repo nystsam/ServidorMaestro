@@ -1,5 +1,6 @@
 package Utils;
 
+import Modelo.ListaArchivos;
 import Modelo.ListaEquipos;
 import Modelo.ListaRedes;
 import javax.swing.JComboBox;
@@ -36,7 +37,8 @@ public class Utils {
     public static ListaRedes listaRedes = new ListaRedes();
     public static String ipMaestroLlegada;
     public static JComboBox listaServidores;
-
+    public static ListaArchivos listaArchivos = new ListaArchivos();
+    public static boolean enUso = false;
     
     
     

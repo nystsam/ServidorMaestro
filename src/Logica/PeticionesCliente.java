@@ -5,6 +5,7 @@
  */
 package Logica;
 
+import Modelo.Peticion;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.Socket;
@@ -30,10 +31,35 @@ public class PeticionesCliente extends Thread {
           
         try {
             DataInputStream input = new DataInputStream(this.so.getInputStream());
+            Peticion peticion;
             
             String [] comando = input.readUTF().split(" ", 2);
-            System.out.println(comando);
+            String [] datos = comando[1].split(".");
+            String texto = comando[2];
+            String tipo = comando[0];
             
+            switch(tipo){
+                
+                // Insertar
+                case "i":
+                    //peticion = new Peticion(tipo, )
+                    break;
+                
+                // Modificar
+                case "m":
+                    
+                    break;
+                    
+                // Eliminar
+                case "e":
+                    
+                    break;
+                    
+                // Leer
+                case "l":
+                    
+                    break;                    
+            }
             
             
         } catch (IOException ex) {
