@@ -25,7 +25,7 @@ public class PeticionModificacion extends Peticion implements Serializable {
         super(nombrePeticion);
     }
     
-    public PeticionModificacion(String nombrePeticion, Archivo archivo, String extension) {
+    public PeticionModificacion(String nombrePeticion, Archivo archivo) {
         super(nombrePeticion);
         this.archivo = archivo;
         this.nombreGeneralArchivo = archivo.getNombre() + "." + archivo.getExtension();

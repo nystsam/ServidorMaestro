@@ -58,6 +58,8 @@ public class EnvioDatosRed extends Thread {
         
         Red red = new Red(Utils.red,Utils.listaEquipos);
         
+        red.setPuerto(Utils.puertoPeticionCliente);
+        
         if(red.getNombre() != null){
             return red;
         }

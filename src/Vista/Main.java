@@ -7,6 +7,7 @@ package Vista;
 
 import Logica.DaemonClienteMulticast;
 import Logica.DaemonEsclavosMulticast;
+import Logica.DaemonPeticionesCliente;
 import Logica.DaemonUnionEsclavos;
 
 /**
@@ -28,6 +29,9 @@ public class Main {
         
         DaemonClienteMulticast clientesBroadcast = new DaemonClienteMulticast();
         clientesBroadcast.start();
+        
+        DaemonPeticionesCliente peticionesCliente = new DaemonPeticionesCliente();
+        peticionesCliente.start();
         
         Ventana ventana = new Ventana();
         ventana.setVisible(true);
